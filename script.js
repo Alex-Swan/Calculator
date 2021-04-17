@@ -24,6 +24,7 @@ let num1;
 let num2;
 let operatorSymbol;
 let answer;
+let sumEquals = false;
 
 // Simple add, subtract, multiply and divide sum function's.
 function add(a, b) {
@@ -55,74 +56,68 @@ function calcDisplay() {
   display.placeholder += displayMessage;
 }
 
-btn1.addEventListener("click", () => {
-  currentNum += "1";
+function numbersAfterEquals(a) {
+  if (sumEquals == true) {
+    currentNum = "";
+    num1 == "";
+    num2 == "";
+    operatorSymbol == "";
+    display.placeholder = "";
+    currentNum += a;
+    displayMessage = "";
+    displayMessage += a;
+    calcDisplay();
+    sumEquals = false;
+    return;
+  }
+}
+
+function calcButton(a) {
+  currentNum += a;
   displayMessage = "";
-  displayMessage += "1";
+  displayMessage += a;
   calcDisplay();
+  numbersAfterEquals(a);
+}
+
+btn1.addEventListener("click", () => {
+  calcButton(1);
 });
 
 btn2.addEventListener("click", () => {
-  currentNum += `2`;
-  displayMessage = "";
-  displayMessage += `2`;
-  calcDisplay();
+  calcButton(2);
 });
 
 btn3.addEventListener("click", () => {
-  currentNum += `3`;
-  displayMessage = "";
-  displayMessage += `3`;
-  calcDisplay();
+  calcButton(3);
 });
 
 btn4.addEventListener("click", () => {
-  currentNum += `4`;
-  displayMessage = "";
-  displayMessage += `4`;
-  calcDisplay();
+  calcButton(4);
 });
 
 btn5.addEventListener("click", () => {
-  currentNum += `5`;
-  displayMessage = "";
-  displayMessage += `5`;
-  calcDisplay();
+  calcButton(5);
 });
 
 btn6.addEventListener("click", () => {
-  currentNum += `6`;
-  displayMessage = "";
-  displayMessage += `6`;
-  calcDisplay();
+  calcButton(6);
 });
 
 btn7.addEventListener("click", () => {
-  currentNum += `7`;
-  displayMessage = "";
-  displayMessage += `7`;
-  calcDisplay();
+  calcButton(7);
 });
 
 btn8.addEventListener("click", () => {
-  currentNum += `8`;
-  displayMessage = "";
-  displayMessage += `8`;
-  calcDisplay();
+  calcButton(8);
 });
 
 btn9.addEventListener("click", () => {
-  currentNum += `9`;
-  displayMessage = "";
-  displayMessage += `9`;
-  calcDisplay();
+  calcButton(9);
 });
 
 btn0.addEventListener("click", () => {
-  currentNum += `0`;
-  displayMessage = "";
-  displayMessage += `0`;
-  calcDisplay();
+  calcButton(0);
 });
 
 btnAdd.addEventListener("click", () => {
@@ -170,4 +165,13 @@ btnEquals.addEventListener("click", () => {
   displayMessage = answer;
   calcDisplay();
   console.log(answer);
+  sumEquals = true;
+});
+
+btnClear.addEventListener("click", () => {
+  currentNum = "";
+  num1 == "";
+  num2 == "";
+  operatorSymbol == "";
+  display.placeholder = "";
 });
